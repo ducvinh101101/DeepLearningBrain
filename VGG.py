@@ -56,15 +56,15 @@ test_generator = test_datagen.flow_from_directory(
 base_model = VGG19(weights='imagenet', include_top=False, input_shape=(128, 128, 3)) #Tải mô hình VGG19 có sẵn
 
 for layer in base_model.layers:
-    layer.trainable = False #đóng băng các lớp để không train lại
+    layer.trainable = False
 
 model = Sequential()
 model.add(base_model)
 #các lớp fully phân loại
 model.add(Flatten())
 model.add(Dense(512, activation='relu'))
-model.add(Dropout(0.5))  # Regularization
-model.add(Dense(2, activation='softmax'))  # Change to number of classes
+model.add(Dropout(0.5))  
+model.add(Dense(2, activation='softmax'))  
 
 #Compile mô hình
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
