@@ -56,7 +56,7 @@ test_generator = test_datagen.flow_from_directory(
 base_model = DenseNet121(weights='imagenet',include_top=False,input_shape=(128,128,3)) #Tải mô hình DenseNet có sẵn
 
 for layer in base_model.layers:
-    layer.trainable = False #đóng băng các lớp để không train lại
+    layer.trainable = False 
 model = Sequential()
 model.add(base_model)
 #các lớp fully phân loại
